@@ -14,28 +14,36 @@
                 </div>
             </div>
         </div>
-    
         <div class="container">
-            <% var flash = request.flash('info').pop(); if (flash) { %>
-                <div class="alert alert-info">
-                    <a class="close" data-dismiss="alert">×</a>
-                    <%- flash %>
+            <div id="board">
+                <div class="head">
+                    <div class="info">
+                    </div>
+                    <div id="counter">
+                        <div class="black"></div>
+                        <div class="delim"></div>
+                        <div class="white"></div>
+                    </div>
                 </div>
-            <% } %>
-            
-            <% flash = request.flash('error').pop(); if (flash) { %>
-                <div class="alert alert-error">
-                    <a class="close" data-dismiss="alert">×</a>
-                    <%- flash %>
-                </div>
-            <% }; %>
-            
-            <%- body %>
-            
-            <hr />
-            <footer>
-                <p>&copy; Company 2012</p>
-            </footer>
+                <canvas width="300" height="300"></canvas>
+            </div>
         </div>
+        <footer>
+            <p>&copy; Rolling on <a href="http://railwayjs.com">RailwayJS</a> and <a href="socket.io">Socket.IO</a>, 2012</p>
+        </footer>
     </body>
+
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+    <script type="text/javascript" src="/javascripts/rails.js"></script>
+    <script type="text/javascript" src="/javascripts/reversi.js"></script>
+    <script type="text/javascript" src="/javascripts/reversi-cli.js"></script>
+    <script type="text/javascript" src="/socket.io/socket.io.js"></script>
+    <script>
+        var BOARD = {
+            player:   '<%= player %>',
+            color:    '<%= game.color || 'w' %>',
+            state:    '<%= game.state(player) %>',
+            position: <%- game.boardToJSON() %>
+        };
+    </script>
 </html>
