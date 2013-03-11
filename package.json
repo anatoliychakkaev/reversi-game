@@ -15,7 +15,8 @@
     "socket.io": "latest",
     "co-socket": "latest",
     "co-assets-compiler": "0.0.1",
-    "co-generators": "0.0.1-3"
+    "co-generators": "0.0.1-3",
+    "kontroller": "0.0.9-13"
   },
   "devDependencies": {
     "nodeunit": "*",
